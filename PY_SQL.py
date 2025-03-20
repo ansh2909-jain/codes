@@ -43,7 +43,7 @@ print("Updated successfully!")
 
 # Delete: Delete customer with ID = 8
 sql_delete_query = "DELETE FROM customers WHERE Id = %s"
-Id_to_delete = (8,)
+Id_to_delete = (7,)
 
 cursor.execute(sql_delete_query, Id_to_delete)
 connection.commit()
