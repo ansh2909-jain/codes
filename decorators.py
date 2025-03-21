@@ -42,6 +42,6 @@ def decorator_two(func):
 
 @decorator_one
 @decorator_two
-def say_Hi():
-    print("Hi!")
-say_Hi()
+def say_Hello():
+    print("Hello!")
+say_Hello()
