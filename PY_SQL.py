@@ -4,7 +4,7 @@ import pymysql
 connection = pymysql.connect(
     host='localhost',
     user='root',  # Change to your actual MySQL username
-    password='AnshJain29@',  # Change to your actual password
+    password='',  # Change to your actual password
     db='mysql'  # Change to your actual database name
 )
 
