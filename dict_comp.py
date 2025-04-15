@@ -81,7 +81,7 @@ for char in text:
 print(freq)
 
 #
-celsius = {'day1': 20, 'day2': 25, 'day3': 30}
+celsius = {'day1': 20, 'day2': 25, 'day3': 35}
 fahrenheit = {day: (temp * 9/5) + 32 for day, temp in celsius.items()}
 print(fahrenheit)
 
