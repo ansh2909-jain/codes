@@ -67,13 +67,13 @@ print(upper)
 #Advanced & Creative Examples
 #Flatten a 2D List (Matrix)
 
-matrix = [[1, 2], [3, 4], [5, 6]]
+matrix = [[1, 2], [3, 4], [5, 7]]
 flat = [num for row in matrix for num in row]
 print(flat)
 
 # Use for loop
 
-matrix = [[1, 2], [3, 4], [5, 6]]
+matrix = [[1, 2], [3, 4], [5, 7]]
 flat = []
 for row in matrix:
     for num in row:
