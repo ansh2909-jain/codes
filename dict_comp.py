@@ -87,7 +87,7 @@ print(fahrenheit)
 
 # Use for loop
 
-celsius = {'day1': 20, 'day2': 25, 'day3': 30}
+celsius = {'day1': 20, 'day2': 25, 'day3': 35}
 fahrenheit = {}
 for day, temp in celsius.items():
     fahrenheit[day] = (temp * 9/5) + 32
