@@ -8,7 +8,7 @@ value = r.get('mykey')
 print(value.decode()) 
 
 r = redis.Redis()
-data = {'name': 'Anmol', 'age': 23}
+data = {'name': 'Anmol', 'age': 22}
 r.set('user:1000', json.dumps(data))
 user_data = json.loads(r.get('user:1000'))
 print(user_data['name']) 
