@@ -2,6 +2,8 @@ import os
 from dotenv import load_dotenv
 import requests
 from requests.auth import HTTPBasicAuth
+from request_module import make_request
+ 
 base_url = 'http://127.0.0.1:8000'
 load_dotenv()
  
@@ -9,93 +11,26 @@ BEARER_TOKEN = os.getenv("token")
 headers = {
     "Authorization": f"Bearer {BEARER_TOKEN}"
 }
- 
 def get_base_endpoint():
-    try:
-        endpoint = '/'
-        complete_url = base_url + endpoint
-        response = requests.get(complete_url, headers=headers, allow_redirects=True)
- 
-        print(f"Final URL after redirect: {response.url}")
-        print(f"Status code: {response.status_code}")
- 
-        if response.status_code == 200:
-            print("Redirect successful. Response content:")
-            print(response.text)
-        else:
-            print(f"Unexpected status code: {response.status_code}")
-    except requests.exceptions.RequestException as e:
-        print(f"Error calling API: {e}")
+    endpoint = '/'
+    code, text = make_request('GET', endpoint, base_url, headers=headers)
  
 def get_hello_endpoint():
-    try:
-        endpoint = '/hello'
-        complete_url = base_url + endpoint
-        response = requests.get(complete_url, headers=headers, allow_redirects=True)
- 
-        print(f"final URL after redirect: {response.url}")
-        print(f"Status code: {response.status_code}")
- 
-        if response.status_code == 200:
-            print("Redirect successful. Response content:")
-            print(response.text)
-        else:
-            print(f"Unexpected status cide: {response.status_code}")
-    except requests.exceptions.RequestException as e:
-        print(f"Error calling API: {e}")
+    endpoint = '/hello'
+    code, text = make_request('GET', endpoint, base_url, headers=headers)
  
 def get_goodbye_endpoint():
-    try:
-        endpoint = '/goodbye'
-        complete_url = base_url + endpoint
-        response = requests.get(complete_url, headers=headers, allow_redirects=True)
- 
-        print(f"final URL after redirect: {response.url}")
-        print(f"Status code: {response.status_code}")
- 
-        if response.status_code == 200:
-            print("Redirect successful. Response content:")
-            print(response.text)
-        else:
-            print(f"Unexpected status cide: {response.status_code}")
-    except requests.exceptions.RequestException as e:
-        print(f"Error calling API: {e}")
+    endpoint = '/goodbye'
+    code, text = make_request('GET', endpoint, base_url, headers=headers)
  
 def get_all_students():
-    try:
-        endpoint = '/students/'
-        complete_url = base_url + endpoint
-        response = requests.get(complete_url, headers=headers, allow_redirects=True)
+    endpoint = '/students/'
+    code, text = make_request('GET', endpoint, base_url, headers=headers)
  
-        print(f"final URL after redirect: {response.url}")
-        print(f"Status code: {response.status_code}")
- 
-        if response.status_code == 200:
-            print("Redirect successful. Response content:")
-            print(response.text)
-        else:
-            print(f"Unexpected status cide: {response.status_code}")
-    except requests.exceptions.RequestException as e:
-        print(f"Error calling API: {e}")
- 
-   
 def get_student_by_id():
-    try:
-        student_id = int(input("enter student ID: "))
-        endpoint = f"/students/{student_id}"
-        complete_url = base_url + endpoint
-        response = requests.get(complete_url, headers=headers, allow_redirects=True)
- 
-        print(f"final URL after redirect: {response.url}")
-        print(f"Status code: {response.status_code}")
- 
-        if response.status_code == 200:
-            print("Redirect successful. Response content:")
-            print(response.text)
-        else:
-            print(f"Unexpected status cide: {response.status_code}")
-    except requests.exceptions.RequestException as e:
-        print(f"Error calling API: {e}")
+    student_id = int(input("Enter student ID: "))
+    endpoint = f'/students/{student_id}'
+    code, text = make_request('GET', endpoint, base_url, headers=headers)
  
 def create_student():
     firstname = input("Enter your first name: ")
@@ -112,29 +47,11 @@ def create_student():
         'bio': bio
     }
  
-    try:
-        endpoint = '/create'
-        complete_url = base_url + endpoint
-        response = requests.post(
-            complete_url,
-            headers=headers,
-            data=payload,
-            allow_redirects=True
-        )
- 
-        print(f"Final URL after redirect: {response.url}")
-        print(f"Status code: {response.status_code}")
- 
-        if response.status_code == 200:
-            print("Request successful. Response content:")
-            print(response.text)
-        else:
-            print(f"Unexpected status code: {response.status_code}")
-    except requests.exceptions.RequestException as e:
-        print(f"Error calling API: {e}")
+    endpoint = '/create'
+    code, text = make_request('POST', endpoint, base_url, headers=headers, payload=payload)
  
 def edit_student():
-    student_id = int(input("Enter the id of student that needs to be edited: "))
+    student_id = int(input("Enter the ID of the student to edit: "))
     firstname = input("Enter your first name: ")
     lastname = input("Enter your last name: ")
     age = int(input("Enter your age: "))
@@ -149,50 +66,14 @@ def edit_student():
         'bio': bio
     }
  
-    try:
-        endpoint = f'/{student_id}/edit'
-        complete_url = base_url + endpoint
-        response = requests.post(
-            complete_url,
-            headers=headers,
-            data=payload,
-            allow_redirects=True
-        )
- 
-        print(f"Final URL after redirect: {response.url}")
-        print(f"Status code: {response.status_code}")
- 
-        if response.status_code == 200:
-            print("Request successful. Response content:")
-            print(response.text)
-        else:
-            print(f"Unexpected status code: {response.status_code}")
-    except requests.exceptions.RequestException as e:
-        print(f"Error calling API: {e}")
+    endpoint = f'/{student_id}/edit'
+    code, text = make_request('POST', endpoint, base_url, headers=headers, payload=payload)
  
 def delete_student():
     student_id = int(input("Enter the ID of the student to delete: "))
- 
-    try:
-        endpoint = f'/{student_id}/delete'
-        complete_url = base_url + endpoint
-        response = requests.delete(
-            complete_url,
-            headers=headers,
-            allow_redirects=True
-        )
- 
-        print(f"Final URL after redirect: {response.url}")
-        print(f"Status code: {response.status_code}")
- 
-        if response.status_code == 200:
-            print("Delete request successful. Response content:")
-            print(response.text)
-        else:
-            print(f"Unexpected status code: {response.status_code}")
-    except requests.exceptions.RequestException as e:
-        print(f"Error calling API: {e}")
- 
+    endpoint = f'/{student_id}/delete'
+    code, text = make_request('DELETE', endpoint, base_url, headers=headers)
+   
 if __name__ == "__main__":
     get_base_endpoint()
     get_hello_endpoint()
