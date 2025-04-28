@@ -7,6 +7,7 @@ base_url = 'http://127.0.0.1:8000'
 load_dotenv()
 VALID_USERNAME = os.getenv("username")
 VALID_PASSWORD = os.getenv("password1")
+
 def get_base_endpoint():
     try:
         endpoint = '/'
@@ -23,7 +24,6 @@ def get_base_endpoint():
             print(f"Unexpected status code: {response.status_code}")
     except requests.exceptions.RequestException as e:
         print(f"Error calling API: {e}")
- 
  
 def get_hello_endpoint():
     try:
@@ -42,8 +42,6 @@ def get_hello_endpoint():
     except requests.exceptions.RequestException as e:
         print(f"Error calling API: {e}")
  
- 
- 
 def get_goodbye_endpoint():
     try:
         endpoint = '/goodbye'
@@ -60,7 +58,6 @@ def get_goodbye_endpoint():
             print(f"Unexpected status cide: {response.status_code}")
     except requests.exceptions.RequestException as e:
         print(f"Error calling API: {e}")
- 
  
 def get_all_students():
     try:
@@ -79,7 +76,6 @@ def get_all_students():
     except requests.exceptions.RequestException as e:
         print(f"Error calling API: {e}")
  
- 
 def get_student_by_id():
     try:
         student_id = int(input("enter student ID: "))
@@ -97,7 +93,6 @@ def get_student_by_id():
             print(f"Unexpected status cide: {response.status_code}")
     except requests.exceptions.RequestException as e:
         print(f"Error calling API: {e}")
- 
  
 def create_student():
     firstname = input("Enter your first name: ")
@@ -134,7 +129,6 @@ def create_student():
             print(f"Unexpected status code: {response.status_code}")
     except requests.exceptions.RequestException as e:
         print(f"Error calling API: {e}")
- 
  
 def edit_student():
     student_id = int(input("Enter the id of student that needs to be edited: "))
@@ -173,7 +167,6 @@ def edit_student():
     except requests.exceptions.RequestException as e:
         print(f"Error calling API: {e}")
  
- 
 def delete_student():
     student_id = int(input("Enter the ID of the student to delete: "))
  
@@ -196,5 +189,3 @@ def delete_student():
             print(f"Unexpected status code: {response.status_code}")
     except requests.exceptions.RequestException as e:
         print(f"Error calling API: {e}")
- 
- 
