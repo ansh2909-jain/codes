@@ -26,5 +26,3 @@ class Publisher:
 config = {'host': 'localhost', 'port': 5672}
 publisher = Publisher(config)
 publisher.publish('test_queue', 'Hello via direct queue!')
- 
- 
