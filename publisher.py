@@ -1,4 +1,3 @@
-# publisher.py
 import pika
  
 class Publisher:
