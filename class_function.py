@@ -65,7 +65,6 @@ class MyClass:
     def display_id(self):
         print(f"ID of self: {id(self)}")
 
-
 # Create an instance of MyClass
 class_instance = MyClass(10)
 print(f"ID of instance: {id(class_instance)}")
